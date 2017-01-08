@@ -16,18 +16,32 @@
       <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
+    <button type="button" class="btn btn-default" aria-label="Left Align">
+      <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+    </button>
+    <div class="btn-group" role="group" aria-label="...">
+      <button type="button" class="btn btn-default">Left</button>
+      <button type="button" class="btn btn-default">Middle</button>
+      <button type="button" class="btn btn-default">Right</button>
+    </div>
+    <blogitem></blogitem>
   </div>
 </template>
 
 <script>
+import BlogItem from './components/BlogItem.vue'
+
 export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Chatpong\'s Vue.js App'
+    name: 'app',
+    components: {
+      'blogitem': BlogItem
+    },
+    data() {
+      return {
+        msg: 'Welcome to Chatpong\'s Vue.js App'
+      }
     }
   }
-}
 </script>
 
 <style>
