@@ -1,13 +1,12 @@
 <template>
     <div>
-        <img :src="imgUrl" />
+        <img :src="imgUrl" class="img-thumbnail blog-image" />
         <h2>{{ title }}</h2>
         <p>{{ excerpt }}</pre>
     </div>
 </template>
 
 <script>
-
     export default {
         props: ['post'],
         computed: {
