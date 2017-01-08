@@ -24,7 +24,7 @@
       <button type="button" class="btn btn-default">Middle</button>
       <button type="button" class="btn btn-default">Right</button>
     </div>
-    <blogitem></blogitem>
+    <blogitem v-for="item in items" :post="item"></blogitem>
   </div>
 </template>
 
@@ -39,19 +39,16 @@ export default {
     created() {
       this.$http({url: 'https://www.unity3d.in.th/api/get_posts/?page=1', method: 'GET'}).then
       (function (response) {
-        // console.log(response.data);
         let posts = response.data.posts;
-        const oldHost = 'https://www.unity3d.in.th/wp-content/uploads';
-        const awsHost = 'https://webcontent.bittree.io/thinunity3dwww';
-        console.log(posts[0].attachments[0].url.replace(oldHost, awsHost));
-        // this.$set('stories', response.data)
-        // Or we as we did before
-        // vm.stories = response.data
-      })
+        posts.map((post)=>{
+          this.items.push(post);
+        })
+      });
     },
     data() {
       return {
-        msg: 'Welcome to Chatpong\'s Vue.js App'
+        msg: 'Welcome to Chatpong\'s Vue.js App',
+        items: []
       }
     }
   }
