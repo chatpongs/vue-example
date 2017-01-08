@@ -44,7 +44,15 @@ export default {
         console.log('go back');
       },
       goNext: function(){
-        console.log('go next');
+        this.page++;
+        this.items = [];
+        this.$http({url: 'https://www.unity3d.in.th/api/get_posts/?page=' + this.page, method: 'GET'}).then
+        (function (response) {
+          let posts = response.data.posts;
+          posts.map((post)=>{
+            this.items.push(post);
+          })
+        });
       }
     },
     created() {
@@ -59,6 +67,7 @@ export default {
     data() {
       return {
         msg: 'Welcome to Chatpong\'s Vue.js App',
+        page: 1,
         items: []
       }
     }
