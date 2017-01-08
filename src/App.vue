@@ -36,6 +36,19 @@ export default {
     components: {
       'blogitem': BlogItem
     },
+    created() {
+      this.$http({url: 'https://www.unity3d.in.th/api/get_posts/?page=1', method: 'GET'}).then
+      (function (response) {
+        // console.log(response.data);
+        let posts = response.data.posts;
+        const oldHost = 'https://www.unity3d.in.th/wp-content/uploads';
+        const awsHost = 'https://webcontent.bittree.io/thinunity3dwww';
+        console.log(posts[0].attachments[0].url.replace(oldHost, awsHost));
+        // this.$set('stories', response.data)
+        // Or we as we did before
+        // vm.stories = response.data
+      })
+    },
     data() {
       return {
         msg: 'Welcome to Chatpong\'s Vue.js App'
