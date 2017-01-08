@@ -25,16 +25,27 @@
       <button type="button" class="btn btn-default">Right</button>
     </div>
     <blogitem v-for="item in items" :post="item"></blogitem>
+    <paginator :goBack="goBack" :goNext="goNext"></paginator>
   </div>
 </template>
 
 <script>
 import BlogItem from './components/BlogItem.vue'
+import Paginator from './components/Paginator.vue'
 
 export default {
     name: 'app',
     components: {
-      'blogitem': BlogItem
+      'blogitem': BlogItem,
+      'paginator': Paginator
+    },
+    methods: {
+      goBack: function(){
+        console.log('go back');
+      },
+      goNext: function(){
+        console.log('go next');
+      }
     },
     created() {
       this.$http({url: 'https://www.unity3d.in.th/api/get_posts/?page=1', method: 'GET'}).then
