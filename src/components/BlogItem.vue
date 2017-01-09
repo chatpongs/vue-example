@@ -3,6 +3,7 @@
         <img :src="imgUrl" class="img-thumbnail blog-image" />
         <h2>{{ title }}</h2>
         <p>{{ excerpt }}</pre>
+        <button @click="read">Read more</button>
     </div>
 </template>
 
@@ -14,6 +15,11 @@
                 const oldHost = 'https://www.unity3d.in.th/wp-content/uploads';
                 const awsHost = 'https://webcontent.bittree.io/thinunity3dwww';
                 return this.attachment.replace(oldHost, awsHost);
+            }
+        },
+        methods: {
+            read: function() {
+                console.log('read more');
             }
         },
         created() {
