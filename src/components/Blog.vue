@@ -1,6 +1,6 @@
 <template>
     <div>
-        <blogitem v-for="item in items" :post="item"></blogitem>
+        <blogitem v-for="item in items" :post="item" :readHandler="showPost"></blogitem>
         <paginator :goBack="goBack" :goNext="goNext"></paginator>
     </div>
 </template>
@@ -9,7 +9,6 @@
     import BlogItem from './BlogItem.vue'
     import Paginator from './Paginator.vue'
     export default {
-        props: ['post'],
         components: {
             'blogitem': BlogItem,
             'paginator': Paginator
@@ -28,6 +27,9 @@
                             this.items.push(post);
                         })
                     });
+            },
+            showPost: function(id) {
+                console.log('showPost: ' + id);
             }
         },
         created() {
