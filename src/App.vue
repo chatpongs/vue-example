@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-view :setdata="setPosts"></router-view>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -10,11 +10,6 @@ import Blog from './components/Blog.vue'
 export default {
     components: {
       'blog': Blog
-    },
-    methods: {
-      setPosts: function(posts){
-        this.posts = posts;
-      }
     },
     data() {
       return {

@@ -14,7 +14,8 @@ var router = new VueRouter({
   routes: [
     { path: '/', component: Blog },
     { path: '/post', name: 'post', component: Post }
-  ]
+  ],
+  mode: 'history',
 })
 
 new Vue({

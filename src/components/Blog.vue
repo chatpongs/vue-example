@@ -9,7 +9,6 @@
     import BlogItem from './BlogItem.vue'
     import Paginator from './Paginator.vue'
     export default {
-        props: ['setdata'],
         components: {
             'blogitem': BlogItem,
             'paginator': Paginator
@@ -39,15 +38,14 @@
                     })
                     this.pages = response.data.pages;
                 });
-                
-                this.setdata(this.items);
+                this.$parent.posts = this.items;
             },
         },
         created() {
-            if(this.$parent.posts.length == 0){
+            this.items = this.$parent.posts;
+            
+            if(this.items == 0){
                 this.getPosts();
-            } else {
-                this.items = this.$parent.posts;
             }
         },
         data() {
