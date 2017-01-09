@@ -13,7 +13,7 @@ Vue.use(VueRouter)
 var router = new VueRouter({
   routes: [
     { path: '/', component: Blog },
-    { path: '/post', component: Post }
+    { path: '/post', name: 'post', component: Post }
   ]
 })
 

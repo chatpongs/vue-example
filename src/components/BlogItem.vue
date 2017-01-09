@@ -3,13 +3,13 @@
         <img :src="imgUrl" class="img-thumbnail blog-image" />
         <h2>{{ title }}</h2>
         <p>{{ excerpt }}</pre>
-        <p><button @click="readHandler(post.id)">Read more</button></p>
+        <p><button @click="readHandler(index)">Read more</button></p>
     </div>
 </template>
 
 <script>
     export default {
-        props: ['post', 'readHandler'],
+        props: ['post', 'index', 'readHandler'],
         computed: {
             imgUrl: function() {
                 const oldHost = 'https://www.unity3d.in.th/wp-content/uploads';

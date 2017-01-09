@@ -1,6 +1,6 @@
 <template>
     <div>
-        <blogitem v-for="item in items" :post="item" :readHandler="showPost"></blogitem>
+        <blogitem v-for="(item, index) in items" :post="item" :readHandler="showPost" :index="index"></blogitem>
         <paginator :goBack="goBack" :goNext="goNext"></paginator>
     </div>
 </template>
@@ -28,8 +28,9 @@
                         })
                     });
             },
-            showPost: function(id) {
-                console.log('showPost: ' + id);
+            showPost: function(index) {
+                console.log('showPost: ' + index);
+                this.$router.push({name: 'post', params: {post: this.items[index]}});
             }
         },
         created() {
